@@ -1,0 +1,26 @@
+{
+  "name": "Lexstart",
+  "version": "1.0.0",
+  "description": "Lexstart assignment",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "webdevelopment",
+    "mobile",
+    "application",
+    "development",
+    "hybrid",
+    "development"
+  ],
+  "author": "Shivanand",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
