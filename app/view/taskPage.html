@@ -1,5 +1,43 @@
 <div class="" ng-controller="taskCtrl">
-
-<h4>{{tasks}}</h4>
-
+  <h3>Tasks</h3>
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <!-- {{tasks}} -->
+      <hr>
+      <div ng-repeat="task in data.tasks">
+        <div class="row">
+          <h4>Task Date : {{task.created_at}}</h4>
+        </div>
+        <div class="row">
+          <h4>
+            Task Actions :
+            <span class="" ng-repeat="operationNeeded in task.Legal_Action_Type.Action_Type_Operation">
+              {{operationNeeded.operation}},
+            </span>
+          </h4>
+        </div>
+        <div class="row" ng-repeat="document in task.Documents">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                <a data-toggle="collapse" data-target="#{{document.id +''+ task.id}}"
+                href="#{{document.id +''+ task.id}}">{{document.name}}</a>
+              </h3>
+            </div>
+            <div id="{{document.id +''+ task.id}}" class="panel-collapse collapse">
+              <div class="panel-body">
+                <div class="row">
+                  Date:{{document.created_at}}
+                </div>
+                <div class="row">
+                  Download Url:<a href="{{document.url}}">{{document.url}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+      </div>
+    </div>
+  </div>
 </div>
