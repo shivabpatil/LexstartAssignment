@@ -22,9 +22,17 @@
     <div class="container">
       <h1>Lexstart</h1>
       <div class="row" >
-        <a href="/tasks" class="btn btn-default">
-          tasks
-        </a>
+        <div class="col-sm-6 col-md-6">
+          <a href="/tasks" class="btn btn-default">
+            tasks
+          </a>
+        </div>
+        <div class="col-sm-6 col-md-6">
+          <a href="/addTasks" class="btn btn-default">
+            Add task
+          </a>
+        </div>
+
       </div>
       <div class="" ng-view>
       </div>
@@ -40,5 +48,7 @@
     <script type="text/javascript" src="/js/app.js"></script>
     <script type="text/javascript" src="/js/controllers/taskCtrl.js"></script>
     <script type="text/javascript" src="/js/services/taskServices.js"></script>
+    <script src="js/dropbox-picker.min.js"></script>
+    <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="6jffm2a6emkki8l"></script>
   </body>
 </html>

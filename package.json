@@ -21,6 +21,7 @@
   "author": "Shivanand",
   "license": "ISC",
   "dependencies": {
+    "angular-dropbox-picker": "0.0.2",
     "express": "^4.14.0"
   }
 }
