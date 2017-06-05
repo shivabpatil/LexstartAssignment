@@ -6,6 +6,9 @@
       <hr>
       <div ng-repeat="task in data.tasks">
         <div class="row">
+          <h4>Task Description : {{task.Legal_Action_Type.template}}</h4>
+        </div>
+        <div class="row">
           <h4>Task Date : {{task.created_at}}</h4>
         </div>
         <div class="row">
