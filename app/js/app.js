@@ -1,10 +1,10 @@
 
 var lxApp = angular.module('lxApp',['ngRoute','taskServices','dropbox-picker'])
   .config(['$routeProvider','$locationProvider','DropBoxSettingsProvider',function($routeProvider,$locationProvider,DropBoxSettingsProvider){
-    $routeProvider
-      .when('/tasks',{templateUrl:'/view/taskPage.html',controller:'taskCtrl'})
-      .when('/addTasks',{templateUrl:'/view/addTask.html',controller:'taskCtrl'});
-      $locationProvider.html5Mode(true);
+    // $routeProvider
+    //   .when('/tasks',{templateUrl:'/view/taskPage.html',controller:'taskCtrl'})
+    //   .when('/addTasks',{templateUrl:'/view/addTask.html',controller:'taskCtrl'});
+    //   $locationProvider.html5Mode(true);
       // Configure the options
         DropBoxSettingsProvider.configure({
             linkType: 'preview',//dropbox link type

@@ -21,21 +21,143 @@
   <body ng-app="lxApp">
     <div class="container">
       <h1>Lexstart</h1>
+      <div class="" ng-controller="taskCtrl">
       <div class="row" >
         <div class="col-sm-6 col-md-6">
-          <a href="/tasks" class="btn btn-default">
-            tasks
-          </a>
-        </div>
-        <div class="col-sm-6 col-md-6">
-          <a href="/addTasks" class="btn btn-default">
+          <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
             Add task
-          </a>
+          </button>
         </div>
+      </div>
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Add a task</h4>
+            </div>
+            <div class="modal-body">
+                <form data-toggle="validator",role="form",name="taskForm">
+                  <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                      <div class="form-group">
+                        <label for="description">Task description</label>
+                        <input type="text" class="form-control" id="" placeholder="Description" ng-model="task.desc">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                      <div class="form-group">
+                        <label for="action">Action</label>
+                        <select class="form-control" ng-model="task.Legal_Action_Type.legal_action">
+                          <option value="Review Uploaded Docs">Review Uploaded Docs</option>
+                          <option value="Upload draft docs">Upload draft docs</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                      <div class="form-group">
+                        <label for="template">Template</label>
+                        <input type="text" class="form-control" id="" placeholder="Template" ng-model="task.Legal_Action_Type.template">
+                      </div>
+                    </div>
+                  </div> -->
+                  <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                      <div class="form-group">
+                        <label for="operation">Operations</label>
+                        <select class="form-control" ng-model="operation.operation">
+                          <option value="Email">Email</option>
+                          <option value="From">From</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                      <div class="form-group">
+                        <label for="name">Document Name</label>
+                        <input type="text" class="form-control" id="" placeholder="Name" ng-model="Document.name">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                      <div class="form-group">
+                        <label for="type">Type</label>
+                        <input type="text" class="form-control" id="" placeholder="Type" ng-model="Document.type">
+                      </div>
+                    </div>
+                  </div> -->
+                  <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                      <div class="form-group">
+                        <a href="javascript:;" drop-box-picker on-dropbox-success="onDropboxSuccess(files)"  on-dropbox-cancel="onDropboxCancel()">Dropbox Picker</a>
 
+                      </div>
+                    </div>
+                  </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" ng-click="createTask(task,operation,Document)" data-dismiss="modal">Create Task</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="" ng-view>
+
+      <!-- task list -->
+
+        <h3>Task List</h3>
+        <div class="row">
+          <div class="col-sm-12 col-md-12">
+            <!-- {{tasks}} -->
+            <hr>
+            <div ng-repeat="task in data.tasks">
+              <div class="row">
+                <h4>Task Description : {{task.Legal_Action_Type.template}}</h4>
+              </div>
+              <div class="row">
+                <h4>Task Date : {{task.created_at}}</h4>
+              </div>
+              <div class="row">
+                <h4>
+                  Task Actions :
+                  <span class="" ng-repeat="operationNeeded in task.Legal_Action_Type.Action_Type_Operation">
+                    {{operationNeeded.operation}},
+                  </span>
+                </h4>
+              </div>
+              <div class="row" ng-repeat="document in task.Documents">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">
+                      <a data-toggle="collapse" data-target="#{{document.id +''+ task.id}}"
+                      href="#{{document.id +''+ task.id}}">{{document.name}}</a>
+                    </h3>
+                  </div>
+                  <div id="{{document.id +''+ task.id}}" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <div class="row">
+                        Date:{{document.created_at}}
+                      </div>
+                      <div class="row">
+                        Download Url:<a href="{{document.url}}">{{document.url}}</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
       </div>
+
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

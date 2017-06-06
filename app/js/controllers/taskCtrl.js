@@ -27,11 +27,18 @@ lxApp.controller('taskCtrl',function ($scope,taskService,DropBoxSettings) {
 
   // create task
   $scope.createTask = function (task,operation) {
-    task.Legal_Action_Type.Action_Type_Operation = operation;
-    task.Documents = filesDetail;
-    task.created_at =new Date();
+    task.created_at = new Date();
     task.updated_at = task.created_at;
+    operation.url = "";
+    operation.created_at = new Date();
+    operation.updated_at = operation.created_at;
+    task.Legal_Action_Type.template = task.desc;
+    task.Legal_Action_Type.Action_Type_Operation = [];
+
+    task.Legal_Action_Type.Action_Type_Operation.push(operation);
+    task.Documents = filesDetail;
     console.log(task);
+    $scope.data.tasks.push(task);
     console.log('Can not use post to write in to local json file');
   }
 })
