@@ -11,3 +11,13 @@ Done ----------->
 
 Not Done ---------->
 1.Gmail Date
+
+
+Steps ---------
+
+1. Run npm install to add dependencies.
+
+2. Need to add task.json file with json objects to app/js/services/tasks location before running
+the project.
+
+3. Go to the location and run node server in command prompt.
