@@ -6,7 +6,7 @@ Angular.js and Bootstrap.
 
 Done ----------->
 1. List the tasks
-2. Add the task
+2. Add the task using model
 3. Use drop box
 
 Not Done ---------->
