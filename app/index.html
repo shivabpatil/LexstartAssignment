@@ -25,12 +25,22 @@
           <h1>Lexstart</h1>
         </div>
       </div>
+      <div class="row">
+        <pre id="output"></pre>
+      </div>
       <div class="" ng-controller="taskCtrl">
         <div class="row" >
-          <div class="col-sm-6 col-md-6">
+          <div class="col-sm-4 col-md-4">
             <h3>Task List</h3>
           </div>
-          <div class="col-sm-6 col-md-6">
+          <div class="col-sm-4 col-md-4">
+            <div id="authorize-div">
+              <button class="btn" id="authorize-button" onclick="handleAuthClick(event)">
+                Authorize Goolge Calender
+              </button>
+            </div>
+          </div>
+          <div class="col-sm-4 col-md-4">
             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
               Add task
             </button>
@@ -50,6 +60,14 @@
                       <div class="form-group">
                         <label for="description">Task description</label>
                         <input type="text" class="form-control" id="" placeholder="Description" ng-model="task.desc">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                      <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="Date" class="form-control" id=""  ng-model="task.action_date">
                       </div>
                     </div>
                   </div>
@@ -244,6 +262,8 @@
     <script type="text/javascript" src="/js/controllers/taskCtrl.js"></script>
     <script type="text/javascript" src="/js/services/taskServices.js"></script>
     <script src="js/dropbox-picker.min.js"></script>
+    <script src="js/calenderApi.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
     <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="6jffm2a6emkki8l"></script>
   </body>
 </html>
