@@ -5,7 +5,7 @@ lxApp.controller('taskCtrl',function ($scope,taskService,DropBoxSettings) {
 // var file = $scope.myFile;
 
   var filesDetail;
-
+  var id = 1;
   //Dropbox select for multiple file
   $scope.onDropboxSuccess = function (files) {
     filesDetail = files;
@@ -27,6 +27,7 @@ lxApp.controller('taskCtrl',function ($scope,taskService,DropBoxSettings) {
 
   // create task
   $scope.createTask = function (task,operation) {
+    task.id = id;
     task.created_at = new Date();
     task.updated_at = task.created_at;
     operation.url = "";
@@ -39,6 +40,24 @@ lxApp.controller('taskCtrl',function ($scope,taskService,DropBoxSettings) {
     task.Documents = filesDetail;
     console.log(task);
     $scope.data.tasks.push(task);
+    id++;
     console.log('Can not use post to write in to local json file');
+  }
+
+  $scope.deleteTask = function (taskId) {
+    var removeByAttr = function(arr, attr, value){
+    var i = arr.length;
+    while(i--){
+       if( arr[i]
+           && arr[i].hasOwnProperty(attr)
+           && (arguments.length > 2 && arr[i][attr] === value ) ){
+
+           arr.splice(i,1);
+
+       }
+    }
+    return arr;
+}
+    $scope.data.tasks = removeByAttr($scope.data.tasks,'id',taskId);
   }
 })

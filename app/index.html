@@ -57,14 +57,6 @@
                       </div>
                     </div>
                   </div>
-                  <!-- <div class="row">
-                    <div class="col-sm-12 col-md-12">
-                      <div class="form-group">
-                        <label for="template">Template</label>
-                        <input type="text" class="form-control" id="" placeholder="Template" ng-model="task.Legal_Action_Type.template">
-                      </div>
-                    </div>
-                  </div> -->
                   <div class="row">
                     <div class="col-sm-12 col-md-12">
                       <div class="form-group">
@@ -76,22 +68,6 @@
                       </div>
                     </div>
                   </div>
-                  <!-- <div class="row">
-                    <div class="col-sm-12 col-md-12">
-                      <div class="form-group">
-                        <label for="name">Document Name</label>
-                        <input type="text" class="form-control" id="" placeholder="Name" ng-model="Document.name">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-12 col-md-12">
-                      <div class="form-group">
-                        <label for="type">Type</label>
-                        <input type="text" class="form-control" id="" placeholder="Type" ng-model="Document.type">
-                      </div>
-                    </div>
-                  </div> -->
                   <div class="row">
                     <div class="col-sm-12 col-md-12">
                       <div class="form-group">
@@ -119,7 +95,73 @@
             <hr>
             <div ng-repeat="task in data.tasks">
               <div class="row">
-                <h4>Task Description : {{task.Legal_Action_Type.template}}</h4>
+                <div class="col-sm-6 col-md-6">
+                  <h4>Task Description : {{task.Legal_Action_Type.template}}</h4>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                  <button class="btn btn-primary" data-toggle="modal" data-target="#myModal1"ng-click="edit(task)" name="button">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                  </button>
+                  <button class="btn btn-primary" ng-click="deleteTask(task.id)" name="button">
+                    <span class="glyphicon glyphicon-trash"></span>
+                  </button>
+                  <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title" id="myModalLabel">Add a task</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form data-toggle="validator",role="form",name="taskForm">
+                              <div class="row">
+                                <div class="col-sm-12 col-md-12">
+                                  <div class="form-group">
+                                    <label for="description">Task description</label>
+                                    <input type="text" class="form-control" id="" placeholder="Description" ng-model="task.desc">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-sm-12 col-md-12">
+                                  <div class="form-group">
+                                    <label for="action">Action</label>
+                                    <select class="form-control" ng-model="task.Legal_Action_Type.legal_action">
+                                      <option value="Review Uploaded Docs">Review Uploaded Docs</option>
+                                      <option value="Upload draft docs">Upload draft docs</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-sm-12 col-md-12">
+                                  <div class="form-group">
+                                    <label for="operation">Operations</label>
+                                    <select class="form-control" ng-model="operation.operation">
+                                      <option value="Email">Email</option>
+                                      <option value="From">From</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-sm-12 col-md-12">
+                                  <div class="form-group">
+                                    <a href="javascript:;" drop-box-picker on-dropbox-success="onDropboxSuccess(files)"  on-dropbox-cancel="onDropboxCancel()">Dropbox Picker</a>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary" ng-click="createTask(task,operation,Document)" data-dismiss="modal">Edit Task</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="row">
                 <h4>Task Date : {{task.created_at}}</h4>
